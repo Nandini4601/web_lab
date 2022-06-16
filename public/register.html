@@ -1,0 +1,48 @@
+<head>
+
+    <title>Clothing - Register</title>
+    <style>
+        body {
+            background-image: url(accessories-collection.png);
+            color: aliceblue;
+            font-size: 30px;
+        }
+
+        .register_btn {
+            background-color: beige;
+            color: black;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+
+<div class="register_div">
+    <h1 class="brand">Enter details Here</h1>
+    <form name="register_form" ng-controller="userRegisterCtrl" ng-submit="submitData()" ng-init="populate()">
+        <label class="fname_label" for="">Cloth name</label><br>
+        <input type="text" name="c_name" id="c_name" class="c_name" ng-required="true">
+        <div ng-show="register_form.c_name.$touched && register_form.c_name.$invalid">
+            <small style="color: red;">enter valid Cloth name</small>
+        </div><br>
+        <label class="lname_label" for="">size</label><br>
+        <input type="text" name="size" id="size" class="size" ng-required="true">
+        <div ng-show="register_form.size.$touched && register_form.size.$invalid">
+            <small style="color: red;">enter valid size</small>
+        </div><br>
+        <label class="cid_label" for="">Cloth_id</label><br>
+        <input type="text" name="cid" id="cid" class="cid" ng-required="true">
+        <div ng-show="register_form.cid.$touched && register_form.cid.$invalid">
+            <small style="color: red;">enter valid cid</small>
+        </div><br>
+        <label class="price_label" for="">price</label><br>
+        <input type="text" name="price" id="price" class="price" ng-required="true">
+        <div ng-show="register_form.price.$touched && register_form.price.$invalid">
+            <small style="color: red;">enter valid price</small>
+        </div><br>
+        <input class="register_btn" type="submit" value="Enter" ng-disabled="register_form.$invalid">
+        <a class="login_link" href="#!/users">
+            <p>View Existing Clothes</p>
+        </a>
+    </form>
+</div>
