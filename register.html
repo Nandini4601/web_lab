@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Sacramento&family=Ubuntu&display=swap"
+        rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+    <script src="scripts/app.js"></script>
+    <title>Clothoing - Register</title>
+    <style>
+        body{
+            background-image: url(accessories-collection.png);
+            color: aliceblue;
+            font-size: 30px;
+        }
+        .register_btn{
+            background-color: beige;
+            color: black;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register_div">
+        <h1 class="brand">Register Here</h1>
+        <form name="register_form" action="register_server.php" method="POST">
+            <label class="fname_label" for="">First Name</label><br>
+            <input type="text" name="f_name" class="f_name" ng-model="user.f_name" ng-required="true">
+            <div ng-show="register_form.f_name.$touched && register_form.f_name.$invalid">
+                <small style="color: red;">enter valid first name</small>
+            </div><br>
+            <label class="lname_label" for="">Last Name</label><br>
+            <input type="text" name="l_name" class="l_name" ng-model="user.l_name" ng-required="true">
+            <div ng-show="register_form.l_name.$touched && register_form.l_name.$invalid">
+                <small style="color: red;">enter valid last name</small>
+            </div><br>
+            <label class="email_label" for="">Email</label><br>
+            <input type="email" name="email" class="email" ng-model="user.email" ng-required="true">
+            <div ng-show="register_form.email.$touched && register_form.email.$invalid">
+                <small style="color: red;">enter valid email-id</small>
+            </div><br>
+            <label class="pwd_label" for="">Password</label><br>
+            <input type="password" name="pwd" class="pwd" ng-model="user.pwd" ng-required="true">
+            <div ng-show="register_form.pwd.$touched && register_form.pwd.$invalid">
+                <small style="color: red;">enter valid password</small>
+            </div><br>
+            <input class="register_btn" type="submit" value="Register" ng-click="reset()" ng-disabled="register_form.$invalid">
+        </form>
+    </div>
+</body>
+
+</html>
