@@ -1,0 +1,156 @@
+<html>
+<head>
+<style> #bordering {
+border: 25px solid transparent; padding: 30px;
+border-image: url(border.jpg) 60 round;
+}
+body{
+    background-image: url("https://www.designbombs.com/wp-content/uploads/2020/02/best-text-editors-1280x720.png");
+}
+</style>
+</head>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+</script>
+<body ng-app="">
+    <h1>TEXT EDITOR</h1>
+<div id="bordering">
+<select ng-model="myVar">
+<option value="" disabled selected>FILE</option>
+<option value="new">new</option>
+<option value="open">open</option>
+<option value="save as">save as</option>
+<option value="exit">exit</option>
+</select>
+<select id= "select" onchange="edit()" ng-model="myvar1">
+<option value="" disabled selected>EDIT</option>
+<option value="cut">cut</option>
+<option value="copy">copy</option>
+<option value="paste">paste</option>
+</select>
+
+<div ng-switch="myVar">
+
+ 
+<table>
+ 
+
+<tr><td>Text to Save:</td></tr>
+<tr>
+ 
+<td colspan="3">
+<textarea id="inputTextToSave" cols="80" rows="25" ng- copy="copied=true" ng-paste="paste=true" ng-cut="cut=true" ></textarea>
+</td>
+</tr>
+</table>
+
+<div ng-switch-when="new">
+<button><a href="file:///C:/Users/MANISHA/Desktop/ssn%20sem%206/web%20programming/lab/cake%20ord ering%20system/ex%207%20&%20ex%208-
+%20create%20vedio%20player/editor%20final.html">new</a> </button>
+</div>
+
+<div ng-switch-when="save as"> Filename to Save As:
+<input id="inputFileNameToSaveAs"></input>
+<button onclick="saveTextAsFile()">Save Text to File</button>
+</div>
+<div ng-switch-when="open">
+<table>
+ 
+<tr>
+
+
+
+</tr>
+</table>
+</div>
+ 
+
+<td>Select a File to Load:</td>
+<td><input type="file" id="fileToLoad"></td>
+<td><button onclick="loadFileAsText()">Load Selected File</button><td>
+ 
+<div ng-switch-when="exit">
+<button class="btn btn-alt a1" onclick = "exitFile()" id = "exitFile">Close
+File</button>
+</div>
+</div>
+<div ng-switch="myvar1">
+ 
+
+<p>You have pasted in Textbox: <b>{{paste}}</b></p>
+<p>You have cut from Textbox: <b>{{cut}}</b></p>
+
+<div ng-switch-when="copy">
+<button class="btn btn-alt a1" onclick = "copytoClipboard()" id = "copy">Copy</button>
+</div>
+<div ng-switch-when="paste">
+<button class="btn btn-alt a1" onclick = "pastetoClipboard()" id = "paste">Paste</button>
+</div>
+<div ng-switch-when="cut">
+<p><button class="btn btn-alt a1" onclick = "cuttoClipboard()" id = "cut">Cut</button>
+</div>
+
+</div>
+
+<script type="text/javascript">
+$scope.cut = false;
+$scope.copy = false;
+$scope.paste = false;
+
+function saveTextAsFile()
+{
+var textToSave = document.getElementById("inputTextToSave").value; 
+var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
+
+var downloadLink = document.createElement("a"); downloadLink.download = fileNameToSaveAs; downloadLink.innerHTML = "Download File"; downloadLink.href = textToSaveAsURL; downloadLink.onclick = destroyClickedElement; downloadLink.style.display = "none"; document.body.appendChild(downloadLink);
+
+downloadLink.click();
+}
+
+function destroyClickedElement(event)
+{
+document.body.removeChild(event.target);
+}
+
+function loadFileAsText()
+{
+ 
+
+var fileToLoad = document.getElementById("fileToLoad").files[0];
+
+var fileReader = new FileReader(); fileReader.onload = function(fileLoadedEvent)
+{
+var textFromFileLoaded = fileLoadedEvent.target.result; document.getElementById("inputTextToSave").value = textFromFileLoaded;
+};
+fileReader.readAsText(fileToLoad, "UTF-8");
+}
+
+function edit()
+{
+
+var x = document.getElementById("select").value; document.getElementById("demo").innerHTML = x + " successful !!";
+}
+
+function copytoClipboard(){
+var textArea = document.getElementById("inputTextToSave"); textArea.select();
+document.execCommand("Copy");
+}
+function cuttoClipboard(){
+var textArea = document.getElementById("inputTextToSave"); textArea.select();
+document.execCommand("Cut");
+}
+
+function pastetoClipboard(){
+
+let pasteArea = document.getElementById('inputTextToSave'); navigator.clipboard.readText()
+.then((text)=>{pasteArea.value+='\n'+ text;
+})
+
+}
+function exitFile(){ window.close();
+}
+</script>
+
+</body>
+</html>
