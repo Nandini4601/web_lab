@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<style>
+    body{
+        font-size: 50px;
+        font-family: cursive;
+        background-color: rgb(182, 221, 222);
+    }
+    h1{
+        background-color: chocolate;
+        font-size: 60px;
+    }
+    a{
+        background-color: rgb(213, 164, 197);
+        color: darkgreen;
+        margin: 10px;
+        padding: 20px;
+        font-size: 30px;
+        font-family: cursive;
+        text-decoration: none;
+        -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+    }
+    a:hover{
+        text-decoration: none;
+        color: darkgreen;
+    }
+</style>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl"> 
+    <greet-user></greet-user>
+<p>time is:</p>
+
+<h1>{{theTime}}</h1>
+
+<h1>{{myHeader}}</h1>
+
+</div>
+
+<a href="index.html">Click me</a>
+
+
+<script>
+var app = angular.module('myApp', []);
+angular.
+  module('myApp').
+  component('greetUser', {
+    template: 'Hello, {{$ctrl.user}}!',
+    controller: function GreetUserController() {
+      this.user = 'Customer';
+    }
+  });
+app.controller('myCtrl', function($scope, $interval,$timeout) {
+  $scope.theTime = new Date().toLocaleTimeString();
+  $interval(function () {
+      $scope.theTime = new Date().toLocaleTimeString();
+  }, 1000);
+  $scope.myHeader = "Wanna buy something??";
+  $timeout(function () {
+      $scope.myHeader = "Offers are here do purchase your clothes!!!";
+  }, 2000);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyApp">
+    <head>
+    <title>
+        Filters
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <style>
+        li{
+            font-size: 40px;
+            color: red;
+        }
+        p{
+            font-size: 70px;
+        }
+        body{
+            background-image: url('shirt_in.jpg');
+            background-color: cornsilk;
+        }
+    </style>
+    </head>
+    <body>
+      <p>Enter Shirt type to search for</p>
+        <div ng-controller="MyController">
+            <input type="text" ng-model="search"/>
+            <ul>
+                <li ng-repeat="i in student | orderBy:'name'|filter:search">
+                    {{i.name}} -{{i.cost}}
+                </li>
+            </ul>
+        </div>
+        <script>
+            var MyApp = angular.module('MyApp',[]);
+            MyApp.controller('MyController',['$scope',function($scope){
+                $scope.student=[
+                    {
+                        name:"Basic half sleeve T-shirt",
+                        cost:"Rs.500"
+                    },
+                    {
+                        name:"Long sleeve Crew neck T-shirts",
+                        cost:"Rs.800"
+                    },
+                    {
+                        name:"Polo collar t-shirt",
+                        cost:"Rs.600"
+                    },
+                    {
+                        name:"V-neck t-shirt",
+                        cost:"Rs.400"
+                    },
+                    {
+                        name:"Henley collar T-shirt",
+                        cost:"Rs.650"
+                    },
+                    {
+                        name:"Baseball Tshirt",
+                        cost:"Rs.500"
+                    },
+                    {
+                        name:"Raglan sleeve t-shirt – Long sleeve",
+                        cost:"Rs.800"
+                    },
+                    {
+                        name:"Turtle neck shirt",
+                        cost:"Rs.670"
+                    },
+                    {
+                        name:"Half Tshirt (Singlet)",
+                        cost:"Rs.770"
+                    },
+                    {
+                        name:"Longline T-shirt",
+                        cost:"Rs.800"
+                    },
+                    {
+                        name:"Baby Doll T-shirt",
+                        cost:"Rs.870"
+                    },
+                ];
+            }]);
+        </script>
+    </body>
+</html>
