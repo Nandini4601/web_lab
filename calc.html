@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calculator</title>
+  <style>
+    body{
+      background-image: url("https://tse4.mm.bing.net/th?id=OIP.vHrZHI-Sqx9DWus9WGl_zgHaHa&pid=Api&P=0&w=186&h=186");
+    }
+  </style>
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <center>
+      <h3 id="bordering" style="background-color: #b1a680; width: 300px">
+        <br />
+        SIMPLE CALCULATOR USING NODE JS<br /><br />
+      </h3>
+      <div
+        ng-app="CalculatorApp"
+        ng-controller="CalculatorController"
+        id="bordering"
+        style="background-color: #87ebcf; width: 300px"
+      >
+        <br />
+        <p>Operand 1</p>
+        <p><input type="number" ng-model="first" /></p>
+        <p>Operand 2</p>
+        <p><input type="number" ng-model="second" /></p>
+        <p>Choose operation</p>
+        <p>
+          <select ng-model="operator">
+            <option value="add">+</option>
+            <option value="subtract">-</option>
+            <option value="multiply">*</option>
+            <option value="divide">/</option>
+          </select>
+        </p>
+        <button ng-click="calculate()">CALCULATE</button>
+        <p>ANSWER</p>
+        <p ng-model="answer">{{answer}}</p>
+        <br />
+      </div>
+    </center>
+    <script>
+      angular
+        .module("CalculatorApp", [])
+        .controller("CalculatorController", function ($scope, $http) {
+          $scope.calculate = function () {
+            ops = $scope.operator;
+            $http
+              .get(ops, {
+                params: {
+                  first: $scope.first,
+                  second: $scope.second,
+                },
+              })
+              .success(function (res) {
+                console.log("Exit status " + JSON.stringify(res));
+                $scope.answer = res.result;
+              });
+          };
+        });
+    </script>
+  </body>
+</html>
