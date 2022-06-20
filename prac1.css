@@ -1,0 +1,20 @@
+body{
+    
+   background-color: #E9D5CA;
+    font-family: 'Lucida Sans';
+}
+
+.buton{
+    background-color: black;
+    color: blanchedalmond;
+    width: 100px;
+    height: 50px;
+}
+
+.frm{
+    background-image: url('si.jpg');
+    border: dashed;
+    border-color: brown;
+    padding-left: 50px;
+    color: #EEEEEE;
+}
