@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Angular navigation</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular-route.js"></script>
+    <link rel="stylesheet" href="styles2.css">
+<style>
+    body{
+        background-image: url(accessories-collection.png);
+    }
+</style>
+    <script>
+
+        var myapp = angular
+            .module("mainModule", ['ngRoute'])
+            .config(function ($routeProvider) {
+                $routeProvider
+
+                    .when("/login", {
+                        templateUrl: "login.html",
+                        controller: "LoginController"
+                    })
+
+                    .when("/home", {
+                        templateUrl: "home.html",
+                        controller: "HomeController"
+                    })
+                    .when("/about",{
+                        templateUrl:"about.html",
+                        controller: "aboutController"
+                    })
+                    .otherwise({ redirectTo: '/login' });
+            })
+            .controller("LoginController", function ($scope, $location) {
+                $scope.username = "";
+                $scope.password = "";
+                $scope.Login = function () {
+                    if ($scope.username == "a" || $scope.password == "a") {
+                        alert("SuccessFully Logged in")
+                        $location.path("home");
+
+                    }
+                }
+            })
+            .controller("HomeController", function ($scope) {
+
+                $scope.message = "It works";
+
+            })
+
+            .controller("aboutController",function($scope){
+                $scope.message1="Hello rendering About page ";
+            })
+
+    </script>
+</head>
+
+<body ng-app="mainModule">
+
+    <div class="navbar">
+        <a class="navitem" href="#/home">home</a>
+        <br>
+        <a class="navitem" href="#/login">login</a>
+        <a class="navitem" href="#/about">about</a>
+    </div>
+
+
+    <div ng-view></div>
+
+    <script type="text/ng-template" id="home.html">
+        <h1>Home</h1>
+        <h2>{{ message }}</h2>
+    </script>
+
+    <script type="text/ng-template" id="login.html">
+        <br><br>
+        <table>
+            <tbody>
+                <tr>
+                    <th>UserName:</th>
+                    <th><input type="text" value="" ng-model="username" /></th>
+                </tr>
+                <tr>
+                    <th>Password:</th>
+                    <th><input type="password" value="" ng-model="password" /></th>
+                </tr>
+                <tr>
+                    <th><button name="Submit" ng-click="Login()"> Submit</button>
+                </tr>
+            </tbody>
+        </table>
+
+    </script>
+    <script type="text/ng-template" id="about.html">
+        <h1>About</h1>
+        <h2>{{ message1 }}</h2>
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Nandini</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="css1/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=MonteCarlo&family=STIX+Two+Text&family=Style+Script&display=swap" rel="stylesheet">
+    <style>
+   
+body
+{
+  margin: 0;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  color: black;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="top">
+      <img class="top-cloud" src="images/cloud.png" alt="">
+      <h1>I'm Nandini</h1>
+      <h2 class="itstu">an <span class="it">IT</span> student</h2>
+      <img class="bottom-cloud" src="images/cloud.png" alt="">
+      <img src="images/mountain.png" alt="">
+    </div>
+    <div class="mid">
+      <div class="profile">
+        <!-- hotspots -->
+        <img src="circlemypic.png" alt="" width="250" height="300" usemap="#chemistry">
+        <map name="chemistry">
+          <area shape="circle" coords="150,175,50" href="https://www.google.com/" alt="">
+        </map>
+        <h2>Hello</h2>
+        <p class="intro"><em>I'm a Student from <strong><a href="https://www.ssn.edu.in/">SSN COLLEGE</a></strong>.</em> I'm a normal person with cool attitude and a control freak.I love myself💜</p>
+      </div>
+      <hr>
+      <div class="skills">
+        <h2>My Skills.</h2>
+        <div class="skill-row">
+          <img class="web" src="https://image.flaticon.com/icons/png/512/2210/2210159.png" alt="" id="moun">
+          <h3>Web developement</h3>
+          <p>Lorem ipsum dolor sit amet, quis in duis, iaculis id felis. Consectetuer vestibulum, nunc urna lectus, erat ligula. Hendrerit nam, lectus ante, ut lorem eros.</p>
+          <ul>
+            <li>Web development is the work involved in developing a website for the Internet (World Wide Web) or an intranet (a private network).</li>
+            <li>Web development can range from developing a simple single static page of plain text to complex web applications, electronic businesses, and social network services.</li>
+          </ul>
+        </div>
+        <div class="skill-row" style="background-color: blueviolet;">
+          <img class="cp" src="https://image.flaticon.com/icons/png/512/2881/2881142.png" alt="">
+          <h3>Programming skils</h3>
+          <p>Lorem ipsum dolor sit amet, mauris sed consectetuer. Etiam et eu, bibendum interdum, lacus quis mauris. Curabitur wisi, quisque vel eu, rutrum nam.</p>
+          <ol>
+            <li>C++</li>
+            <li>Python</li>
+          </ol>
+        </div>
+      </div>
+      <hr>
+      <div class="contact-me">
+        <h2>See my website</h2>
+        <h3>If you love web developement and Nature as much as I do</h3>
+        <p class="co">Lorem ipsum dolor sit amet, in quis, aenean amet. Phasellus sodales, tellus donec dui, ornare erat.</p>
+        <a class="btn" href="index.html">Click ME</a>
+      </div>
+    </div>
+
+<div class="">
+  <h1>The audio element</h1>
+
+<p>Click on the play button to play a sound:</p>
+
+<audio controls>
+  <source src="C:\Users\NANDINI\Downloads\videoplayback.mp4" type="audio/ogg">
+  Your browser does not support the audio element.
+</audio>
+
+</div>
+<div class="">
+  <h3>Click here to know my location!!!</h3>
+
+<button onclick="getLocation()" class="btn">Click me</button>
+
+<p id="demo"></p>
+</div>
+    <div class="bottom">
+      <a class="footer-link" href="https://www.linkedin.com/">LinkedIn</a>
+      <a class="footer-link" href="https://twitter.com/">Twitter</a>
+      <a class="footer-link" href="https://www.appbrewery.co/">Website</a>
+      <p class="copyright">© 2021 Nandini</p>
+    </div>
+    <script>
+    var x = document.getElementById("demo");
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+
+    function showPosition(position) {
+      x.innerHTML = "Latitude: " + position.coords.latitude +
+      "<br>Longitude: " + position.coords.longitude;
+    }
+    </script>
+  </body>
+</html>
